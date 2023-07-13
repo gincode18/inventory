@@ -5,8 +5,11 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  
+  background-image:url('assets/SARTHAK111.jpeg'); 
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,7 +17,7 @@
   -webkit-text-size-adjust: 100%;
 }
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid white;
 }
 
 a {
@@ -30,17 +33,26 @@ body {
   margin: 0;
   position: absolute;
   left: 30%;
-  bottom: 20%;
+
   display: flex;
   place-items: center;
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
-
+.id{
+  font-size: larger;
+  padding-right: 20px;
+}
+.butt{
+  margin-top: 30px;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+.id2{
+margin-top: 30px;
 }
 
 button {

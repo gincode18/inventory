@@ -16,7 +16,7 @@ const InventoryList = () => {
  
     
         
-    const response = await fetch('http://localhost:3000/api/inventory', {
+    const response = await fetch('https://inventory-rzhx.onrender.com/api/inventory', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,14 +40,14 @@ const InventoryList = () => {
  
     
         
-    const response = await fetch(`http://localhost:3000/api/inventory/${form.id}`, {
+    const response = await fetch(`https://inventory-rzhx.onrender.com/api/inventory/${form.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
         name:form.name,
-        quantity:form.quantname=vishity,
+        quantity:form.quantity,
         price:form.price
 
       }),
@@ -64,7 +64,7 @@ const InventoryList = () => {
  
     
         
-    const response = await fetch(`http://localhost:3000/api/inventory/${form.id}`, {
+    const response = await fetch(`https://inventory-rzhx.onrender.com/api/inventory/${form.id}`, {
       method: 'DELETE'
       
     });
@@ -77,93 +77,82 @@ const InventoryList = () => {
     
   };
   useEffect(() => {
-    axios.get("http://localhost:3000/api/inventory").then((response) => {
+    axios.get("https://inventory-rzhx.onrender.com/api/inventory").then((response) => {
       setInventory(response.data);
     });
     
-  }, []);
+  });
 
   return (
-    <div>
-      <h1>Inventory List</h1>
-      <table>
+    <div style={{padding: "20px"}}>
+      <h1>Inventory System</h1>
+      <table style={{borderCollapse: "collapse", width: "100%", marginTop: "20px"}}>
         <thead>
           <tr>
-            <th>ID</th>
-
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th style={{padding: "10px"}}>ID</th>
+            <th style={{padding: "10px"}}>Name</th>
+            <th style={{padding: "10px"}}>Price</th>
+            <th style={{padding: "10px"}}>Quantity</th>
           </tr>
         </thead>
         <tbody>
           {inventory.map((item) => (
             <tr key={item._id}>
-              <td>{item._id}</td>
-              <td>{item.name}</td>
-
-              <td>{item.price}</td>
-              <td>{item.quantity}</td>
+              <td style={{padding: "10px"}}>{item._id}</td>
+              <td style={{padding: "10px"}}>{item.name}</td>
+              <td style={{padding: "10px"}}>{item.price}</td>
+              <td style={{padding: "10px"}}>{item.quantity}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div>
-      <form>
-      <label htmlFor='name'>name
-        <input
-        name="name"
-          type="text" 
-          value={form.name}
-          onChange={handleChange}
-          required
-
-        />
-      </label>
-    </form>
-    <form>
-      <label>quantity
-        <input
-        name="quantity"
-          type="text" 
-          value={form.quantity}
-          onChange={handleChange}
-          required
-
-        />
-      </label>
-    </form>
-    <form>
-      <label>price
-        <input
-        name="price"
-          type="text" 
-          value={form.price}
-          onChange={handleChange}
-          required
-
-        />
-      </label>
-    </form>
-    <button type="button" onClick={postreq}>POST</button>
-    <form>
-      <label>id
-        <input
-        name="id"
-          type="text" 
-          value={form.id}
-          onChange={handleChange}
-          required
-
-        />
-      </label>
-    </form>
-    <button type="button" onClick={delreq}>DEL</button>
-    <button type="button" onClick={updreq}>UPDATE</button>
-
+      <div style={{marginTop: "20px"}}>
+        <form>
+          <label htmlFor='name' className="id">Name:</label>
+          <input
+            name="name"
+            type="text" 
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+        </form>
+        <form>
+          <label htmlFor='quantity' className="id">Quantity:</label>
+          <input
+            name="quantity"
+            type="text" 
+            value={form.quantity} 
+            onChange={handleChange}
+            required
+          />
+        </form>
+        <form>
+          <label htmlFor='price' className="id">Price:</label>
+          <input
+            name="price"
+            type="text" 
+            value={form.price}
+            onChange={handleChange}
+            required
+          />
+        </form>
+        <button className="butt" type="button" onClick={postreq}>Add Item</button>
+        <form className="id2">
+          <label htmlFor='id' className="id">ID:</label>
+          <input
+            name="id"
+            type="text" 
+            value={form.id}
+            onChange={handleChange}
+            required
+          />
+        </form>
+        <button type="button" className="butt" onClick={delreq}>Delete Item</button>
+        <button type="button" onClick={updreq}>Update Item</button>
       </div>
     </div>
   );
-};
+          }
 
 export default InventoryList;

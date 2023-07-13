@@ -43,7 +43,7 @@ app.get('/api/inventory', async (req, res) => {
   }
 });
 app.get('/', (req, res) => {
-  res.send('heelo')
+  res.send('helo')
 });
 
 // Get a single inventory item
